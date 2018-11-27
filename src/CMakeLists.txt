@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.4.3)
 project(maxconn)
 set(CMAKE_C_FLAGS "-Wall -std=c17")
+add_subdirectory(lib)
 add_subdirectory(server)
 add_subdirectory(client)

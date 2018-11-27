@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.4.3)
+project(maxconn)
+add_executable(client client.c)
+target_include_directories(client PRIVATE ../lib)
+add_executable(launcher launcher.c)
