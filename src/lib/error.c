@@ -20,6 +20,20 @@ err_sys(const char *fmt, ...)
         exit(1);
 }
 
+/* Fatal error unrelated to system call
+ * Print message and terminate */
+
+void
+err_quit(const char *fmt, ...)
+{
+        va_list         ap;
+
+        va_start(ap, fmt);
+        err_doit(0, LOG_ERR, fmt, ap);
+        va_end(ap);
+        exit(1);
+}
+
 /* Print message and return to caller
  * Caller specifies "errnoflag" and "level" */
 

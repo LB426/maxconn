@@ -4,6 +4,7 @@
 #define __unp_h
 
 #include        <netinet/in.h>
+#include        <arpa/inet.h>
 #include        <sys/socket.h>
 #include        <errno.h>
 #include        <stdio.h>
@@ -23,10 +24,17 @@ void     Close(int);
 pid_t    Fork(void);
 int      Accept(int, SA *, socklen_t *);
 void     Bind(int, const SA *, socklen_t);
+void     Connect(int, const struct sockaddr *, socklen_t);
 void     Listen(int, int);
 int      Socket(int, int, int);
 void     Writen(int, void *, size_t);
-void     str_echo(int);
 void     err_sys(const char *, ...);
+void     err_quit(const char *, ...);
+void     Inet_pton(int, const char *, void *);
+void     str_echo(int);
+void     str_cli(FILE *, int);
+char     *Fgets(char *, int, FILE *);
+void     Fputs(const char *, FILE *);
+ssize_t  Readline(int, void *, size_t);
 
 #endif  /* __unp_h */
