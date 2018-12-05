@@ -7,10 +7,12 @@
 #include        <arpa/inet.h>
 #include        <sys/socket.h>
 #include        <errno.h>
+#include        <signal.h>
 #include        <stdio.h>
 #include        <stdlib.h>
 #include        <string.h>
 #include        <unistd.h>
+#include        <sys/wait.h>
 
 #define SA      struct sockaddr
 
@@ -36,5 +38,9 @@ void     str_cli(FILE *, int);
 char     *Fgets(char *, int, FILE *);
 void     Fputs(const char *, FILE *);
 ssize_t  Readline(int, void *, size_t);
+
+typedef void    Sigfunc(int);   /* for signal handlers */
+Sigfunc  *Signal(int, Sigfunc *);
+void     sig_chld(int);
 
 #endif  /* __unp_h */
