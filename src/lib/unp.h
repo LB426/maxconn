@@ -32,6 +32,7 @@ int      Socket(int, int, int);
 void     Writen(int, void *, size_t);
 void     err_sys(const char *, ...);
 void     err_quit(const char *, ...);
+void     printm(const char *, ...);
 void     Inet_pton(int, const char *, void *);
 void     str_echo(int);
 void     str_cli(FILE *, int);

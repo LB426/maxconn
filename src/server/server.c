@@ -24,7 +24,6 @@ main(int argc, char **argv)
 
         for( ; ; ) {
                 clilen = sizeof(cliaddr);
-                connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
                 if ( (connfd = accept(listenfd, (SA *) &cliaddr, &clilen)) < 0) {
                         if (errno == EINTR)
                                 continue;               /* back to for */

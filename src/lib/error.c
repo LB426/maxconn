@@ -2,7 +2,7 @@
 #include        <stdarg.h>              /* ANSI C header file */
 #include        <syslog.h>              /* for syslog() */
 
-int             daemon_proc = 1;            /* set nonzero by daemon_init() */
+int             daemon_proc;            /* set nonzero by daemon_init() */
 
 static void     err_doit(int, int, const char *, va_list);
 
@@ -57,5 +57,19 @@ err_doit(int errnoflag, int level, const char *fmt, va_list ap)
                 fputs(buf, stderr);
                 fflush(stderr);
         }
+        return;
+}
+
+void
+printm(const char *fmt, ...)
+{
+        va_list         ap;
+        char            buf[MAXLINE + 1] = {0};
+
+        va_start(ap, fmt);
+        vsnprintf(buf, MAXLINE, fmt, ap);
+        printf("%s", buf);
+        syslog(LOG_ALERT, "%s", buf);
+        va_end(ap);
         return;
 }
