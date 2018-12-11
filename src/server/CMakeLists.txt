@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.4.3)
 project(maxconn)
 add_executable(server server.c)
+add_executable(server2 server2.c)
 target_include_directories(server PRIVATE ../lib)
+target_include_directories(server2 PRIVATE ../lib)
 target_link_libraries(server error wrapsock wrapunix str_echo signal sigchldwaitpid)
+target_link_libraries(server2 error wrapsock wrapunix str_echo signal sigchldwaitpid)

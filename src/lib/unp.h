@@ -35,6 +35,7 @@ void     err_quit(const char *, ...);
 void     printm(const char *, ...);
 void     Inet_pton(int, const char *, void *);
 void     str_echo(int);
+void     str_echo2(int);
 void     str_cli(FILE *, int);
 void     str_cli2(FILE *, int);
 char     *Fgets(char *, int, FILE *);
@@ -44,5 +45,7 @@ ssize_t  Readline(int, void *, size_t);
 typedef void    Sigfunc(int);   /* for signal handlers */
 Sigfunc  *Signal(int, Sigfunc *);
 void     sig_chld(int);
+
+void     gen_num_str(int);
 
 #endif  /* __unp_h */
