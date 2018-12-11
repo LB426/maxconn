@@ -36,6 +36,7 @@ void     printm(const char *, ...);
 void     Inet_pton(int, const char *, void *);
 void     str_echo(int);
 void     str_cli(FILE *, int);
+void     str_cli2(FILE *, int);
 char     *Fgets(char *, int, FILE *);
 void     Fputs(const char *, FILE *);
 ssize_t  Readline(int, void *, size_t);
