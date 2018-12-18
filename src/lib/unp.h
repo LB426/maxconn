@@ -13,6 +13,7 @@
 #include        <string.h>
 #include        <unistd.h>
 #include        <sys/wait.h>
+#include        <time.h>
 
 #define SA      struct sockaddr
 
@@ -47,5 +48,6 @@ Sigfunc  *Signal(int, Sigfunc *);
 void     sig_chld(int);
 
 void     gen_num_str(int);
+void     log_to_file(const char* message, ...);
 
 #endif  /* __unp_h */
