@@ -14,6 +14,7 @@
 #include        <unistd.h>
 #include        <sys/wait.h>
 #include        <time.h>
+#include        <libgen.h>
 
 #define SA      struct sockaddr
 
@@ -49,5 +50,12 @@ void     sig_chld(int);
 
 void     gen_num_str(int);
 void     log_to_file(const char* message, ...);
+
+struct __procinfo 
+{
+        char progname[32];
+        char logdirpath[128];
+};
+typedef struct __procinfo _procinfo;
 
 #endif  /* __unp_h */

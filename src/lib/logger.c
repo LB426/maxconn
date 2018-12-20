@@ -1,7 +1,7 @@
 #include        "unp.h"
 #include        <stdarg.h>
 
-char logdir[128] = {0};
+_procinfo procinfo;
 
 /* лог в файл */
 void
@@ -12,11 +12,10 @@ log_to_file(const char* message, ...)
         char timestr[128] = {0};
         time_t now;
         struct tm *t; 
-        char filename[64] = {0};
+        char filename[256] = {0};
         FILE *f; 
 
-        
-        snprintf(filename, 256, "%s/%s%d.log", logdir,"client", getpid());
+        snprintf(filename, 256, "%s/%s_%d.log", procinfo.logdirpath, procinfo.progname, getpid());
         now = time(NULL);
         t = localtime(&now);
         strftime(timestr, sizeof(timestr), "%Y-%m-%d %H:%M:%S", t); 
@@ -25,10 +24,9 @@ log_to_file(const char* message, ...)
         vsprintf(msgstr, message, args);
         va_end(args);
 
-        for(int i = 0; i < 2048; ++i) {
+        for(int i = 0; i < 2048; ++i)
                 if (msgstr[i] == 0x0A)
                         msgstr[i] = ' ';
-        }
 
         f = fopen( filename, "a+" );
         if(f == NULL) {

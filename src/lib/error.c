@@ -56,6 +56,7 @@ err_doit(int errnoflag, int level, const char *fmt, va_list ap)
                 fflush(stdout);         /* in case stdout and stderr are the same */
                 fputs(buf, stderr);
                 fflush(stderr);
+                log_to_file("%s", buf);
         }
         return;
 }

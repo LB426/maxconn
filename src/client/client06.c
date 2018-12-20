@@ -5,7 +5,7 @@
  ******************************************************************************/
 #include "unp.h"
 
-extern char logdir[128];
+extern _procinfo procinfo;
 
 int 
 main(int argc, char **argv)
@@ -17,7 +17,8 @@ main(int argc, char **argv)
 
         if (argc != 3)
                 err_quit("usage: client <IPaddress> <logdir>");
-        snprintf(logdir, 128, "%s", argv[2]);        
+        snprintf(procinfo.progname, 32, "%s", basename(argv[0]));        
+        snprintf(procinfo.logdirpath, 128, "%s", argv[2]);        
 
         sockfd = Socket(AF_INET, SOCK_STREAM, 0);
 

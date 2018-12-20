@@ -7,6 +7,6 @@ sig_chld(int signo)
         int     stat;
 
         while ( (pid = waitpid(-1, &stat, WNOHANG)) > 0)
-                printm("child %d terminated\n", pid);
+                log_to_file("child %d terminated\n", pid);
         return;
 }
